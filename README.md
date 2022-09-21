@@ -3,6 +3,14 @@
 This is a provision of API that can do some basic e-commerce functions.
 
 
+## Admin details 
+
+Products can be added from the admin 
+
+`username`:**kal**
+`password`:**kal**
+
+
 
 ### Accounts 
 
@@ -48,21 +56,7 @@ Authentication and permissions => *Token*
 Endpoint => `127.0.0.1:8000/accounts/user`
 
 <br>
- 
-<p>Required parameters => username,email,password </p>
 
-```
-data = {
-    "username":"",
-    "email":"",
-    "first_name":"",
-    "last_name":"",
-    "country":"",
-    "phone":"",
-    "is_staff:"",
-    "password":"",
-}
-```
 
 <hr>
 
