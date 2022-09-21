@@ -54,7 +54,7 @@ class EditProfile(APIView):
     authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
     def patch(self,request):
-        serializer = ProfileSerializer(request.data)
+        serializer = ProfileSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
         return Response(serializer.data)

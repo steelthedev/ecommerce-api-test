@@ -1,3 +1,4 @@
+
 from django.test import TestCase
 from .models import Order, OrderItem
 from django.urls import reverse
@@ -46,9 +47,12 @@ class TestCreateOrder_View(APITestCase):
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
         self.product = Product.objects.create(created_by=self.profile,price=float(20000))
         self.payload = {
-            "user":self.profile,
             "paid_amount":float(20000),
-            "items":self.product.id
+            "items":[
+                {
+                    "product":self.product.id
+                }
+            ]
         }
 
 
@@ -65,7 +69,9 @@ class TestCreateOrder_View(APITestCase):
         self.assertEqual(res.status_code,401)
 
 
-    
+    def test_post_method(self):
+        res = self.client.post(reverse("orders:create_order"),self.payload,format="json")
+        self.assertEqual(res.status_code,201)
 
   
 

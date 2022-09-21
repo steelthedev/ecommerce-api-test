@@ -35,6 +35,38 @@ data = {
 
 <hr>
 
+
+
+* To get logged in user:
+
+Request Type => **GET**
+<br>
+Authentication and permissions => *Token*
+
+<br>
+
+Endpoint => `127.0.0.1:8000/accounts/user`
+
+<br>
+ 
+<p>Required parameters => username,email,password </p>
+
+```
+data = {
+    "username":"",
+    "email":"",
+    "first_name":"",
+    "last_name":"",
+    "country":"",
+    "phone":"",
+    "is_staff:"",
+    "password":"",
+}
+```
+
+<hr>
+
+
 * To login users:
 
 Request Type => **POST**
@@ -53,4 +85,69 @@ Endpoint => `127.0.0.1:8000/accounts/api/v1/token/login`
 <hr>
 
 
+* To Edit user details:
+
+Request Type => **PATCH**
+<br>
+Authentication and permissions => *Token*
+
+<br>
+
+Endpoint => `127.0.0.1:8000/accounts/user-edit`
+
+<br>
+ 
+<p>Required parameters => username,email,password,... </p>
+
+```
+data = {
+    "username":"",
+    "email":"",
+    "first_name":"",
+    "last_name":"",
+    "country":"",
+    "phone":"",
+    "is_staff:"",
+    "password":"",
+}
+```
+
+<hr>
+
+
 ### Orders
+
+* To Create user Orders:
+
+Request Type => **POST**
+<br>
+Authentication and permissions => *Token*
+
+<br>
+
+Endpoint => `127.0.0.1:8000/orders/create-order`
+
+<hr>
+
+```
+
+    {
+    "paid_amount":float(20000),
+    "items":[
+        {
+            "product":product.id
+        }
+    ]
+    }
+```
+* To get user Orders:
+
+Request Type => **POST**
+<br>
+Authentication and permissions => *Token*
+
+<br>
+
+Endpoint => `127.0.0.1:8000/orders/get-user-order`
+
+<hr>

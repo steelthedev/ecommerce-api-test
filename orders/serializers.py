@@ -38,7 +38,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
 
 class OrderSerializer(serializers.ModelSerializer):
     items = OrderItemSerializer(many=True)
-    user = ProfileSerializer(many=False)
+    user = ProfileSerializer(many=False, read_only=True)
     class Meta:
         model = Order
         fields = (
@@ -48,6 +48,7 @@ class OrderSerializer(serializers.ModelSerializer):
             "items"
             
         )
+        extra_kwargs = {'user': {'required': False}}
     
     def create(self, validated_data):
         items_data = validated_data.pop('items')
