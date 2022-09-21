@@ -49,8 +49,8 @@ class Test_Profile_List_Views(APITestCase):
         self.token = Token.objects.get(user=self.profile)
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
 
-    def tearDown(self):
-        pass
+    def tearDown(self) -> None:
+        return super().tearDown()
 
     def get_url(self):
         return self.client.get(reverse("accounts:users_list"))
@@ -95,7 +95,7 @@ class Test_GetProfile_View(APITestCase):
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
     
     def tearDown(self) -> None:
-        pass
+        return super().tearDown()
 
 
     def get_url(self):

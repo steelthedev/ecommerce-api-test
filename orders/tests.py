@@ -14,8 +14,8 @@ class TestOrderModel(TestCase):
     def setUp(self) -> None:
         self.profile = Profile.objects.create(username="test", email="test@test.com", password = "anotehrpasswordtest")
         self.order = Order.objects.create(user=self.profile,paid_amount=float(20000))
-    def tearDown(self):
-        pass
+    def tearDown(self) -> None:
+        return super().tearDown()
 
     def test_model(self):
         self.assertTrue(isinstance(self.order,Order))
@@ -31,8 +31,8 @@ class TestOrderItemModel(TestCase):
         self.order = Order.objects.create(user=self.profile,paid_amount=float(20000))
         self.product = Product.objects.create(created_by=self.profile,price=float(20000))
         self.order_item = OrderItem.objects.create(order=self.order,product=self.product)
-    def tearDown(self):
-        pass
+    def tearDown(self) -> None:
+        return super().tearDown()
 
     def test_model(self):
         self.assertTrue(isinstance(self.order_item,OrderItem))
@@ -57,7 +57,7 @@ class TestCreateOrder_View(APITestCase):
 
 
     def tearDown(self) -> None:
-        pass
+        return super().tearDown()
 
     def get_url(self):
         return self.client.get(reverse("orders:create_order"))
